@@ -5,7 +5,7 @@ class ClickHouseProgress {
     let new_bytes      : UInt64;
     let new_total_rows : UInt64;
 
-    init(socketReader : SocketReader, revision : UInt64) {
+    init(socketReader : mbSocketReader, revision : UInt64) {
         self.new_rows = socketReader.read()!;
         self.new_bytes = socketReader.read()!;
 

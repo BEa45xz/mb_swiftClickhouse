@@ -1,7 +1,7 @@
 import Foundation
 
 class ColumnNullable {
-    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : SocketReader) -> [ClickHouseValue]? {
+    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : mbSocketReader) -> [ClickHouseValue]? {
         // Получаем список значение нулов
         var nulls = [Bool]();
         for _ in 0..<num_rows {

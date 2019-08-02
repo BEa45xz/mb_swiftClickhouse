@@ -1,7 +1,7 @@
 import Foundation
 
 class ColumnArray {
-    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : SocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
+    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : mbSocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
         let in_array_code : ClickHouseType;
         switch (type) {
             case let .Array(in_array) :

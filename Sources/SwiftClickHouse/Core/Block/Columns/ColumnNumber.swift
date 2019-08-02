@@ -1,8 +1,8 @@
 import Foundation
 
 class ColumnNumber {
-    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : SocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
-        var add : ((SocketReader) -> NSNumber?);
+    static func load(num_rows : UInt64, type : ClickHouseType, socketReader : mbSocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
+        var add : ((mbSocketReader) -> NSNumber?);
 
         switch (type) {
             case .UInt8 :
@@ -69,7 +69,7 @@ class ColumnNumber {
         return false;
     }
 
-    private static func addUInt8(socketReader : SocketReader) -> NSNumber? {
+    private static func addUInt8(socketReader : mbSocketReader) -> NSNumber? {
         if let t : UInt8 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -77,7 +77,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addInt8(socketReader : SocketReader) -> NSNumber? {
+    private static func addInt8(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Int8 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -85,7 +85,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addUInt16(socketReader : SocketReader) -> NSNumber? {
+    private static func addUInt16(socketReader : mbSocketReader) -> NSNumber? {
         if let t : UInt16 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -93,7 +93,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addInt16(socketReader : SocketReader) -> NSNumber? {
+    private static func addInt16(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Int16 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -101,7 +101,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addUInt32(socketReader : SocketReader) -> NSNumber? {
+    private static func addUInt32(socketReader : mbSocketReader) -> NSNumber? {
         if let t : UInt32 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -109,7 +109,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addInt32(socketReader : SocketReader) -> NSNumber? {
+    private static func addInt32(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Int32 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -117,7 +117,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addUInt64(socketReader : SocketReader) -> NSNumber? {
+    private static func addUInt64(socketReader : mbSocketReader) -> NSNumber? {
         if let t : UInt64 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -125,7 +125,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addInt64(socketReader : SocketReader) -> NSNumber? {
+    private static func addInt64(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Int64 = socketReader.readInt() {
             return NSNumber(value : t);
         }
@@ -133,7 +133,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addFloat(socketReader : SocketReader) -> NSNumber? {
+    private static func addFloat(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Float = socketReader.readFloat() {
             return NSNumber(value : t);
         }
@@ -141,7 +141,7 @@ class ColumnNumber {
         return nil;
     }
 
-    private static func addDouble(socketReader : SocketReader) -> NSNumber? {
+    private static func addDouble(socketReader : mbSocketReader) -> NSNumber? {
         if let t : Double = socketReader.readDouble() {
             return NSNumber(value : t);
         }

@@ -9,7 +9,7 @@ class BlockProfile {
     let rows_before_limit            : UInt64;
     let calculated_rows_before_limit : Bool;
 
-    init(socketReader : SocketReader) {
+    init(socketReader : mbSocketReader) {
         self.rows   = socketReader.read()!;
         self.blocks = socketReader.read()!;
         self.bytes  = socketReader.read()!;

@@ -12,7 +12,7 @@ class Block {
 
     }
 
-    func load(socketReader : SocketReader, revision : UInt64) -> Bool {
+    func load(socketReader : mbSocketReader, revision : UInt64) -> Bool {
         if (revision >= Connection.DBMS_MIN_REVISION_WITH_BLOCK_INFO) {
             guard let _ = socketReader.read() else {
                 return false;
@@ -75,7 +75,7 @@ class Block {
         return true;
     }
 
-    func loadColumnByType(num_rows : UInt64, type : String, socketReader : SocketReader) -> [ClickHouseValue]? {
+    func loadColumnByType(num_rows : UInt64, type : String, socketReader : mbSocketReader) -> [ClickHouseValue]? {
         guard let code = self.getTypeCode(type: type) else {
             return nil;
         }
@@ -83,7 +83,7 @@ class Block {
         return Block.loadColumnByType(num_rows : num_rows, code : code, socketReader : socketReader);
     }
 
-    static func loadColumnByType(num_rows : UInt64, code : ClickHouseType, socketReader : SocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
+    static func loadColumnByType(num_rows : UInt64, code : ClickHouseType, socketReader : mbSocketReader, nulls: [Bool]? = nil) -> [ClickHouseValue]? {
         switch (code) {
             case .UInt8, .UInt16, .UInt32, .UInt64, .Int8, .Int16, .Int32, .Int64, .Float32, .Float64 :
                 return ColumnNumber.load(num_rows : num_rows, type : code, socketReader : socketReader, nulls: nulls);
