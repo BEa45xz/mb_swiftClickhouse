@@ -8,6 +8,6 @@ let package = Package(
       .package(url: "https://github.com/IBM-Swift/BlueSocket.git", from: "1.0.0")
   ],
   targets:      [
-      .target(name: "SwiftClickHouse", dependencies: ["SwiftyJson", "BlueSocket"]),
+      .target(name: "SwiftClickHouse", dependencies: ["SwiftyJSON", "Socket"]),
   ]
 )
