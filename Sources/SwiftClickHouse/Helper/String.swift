@@ -11,7 +11,7 @@ extension String {
 #if os(Linux)
                     str.append(nsString.substring(with: match.range(at: i)));
 #else
-                    str.append(nsString.substring(with: match.rangeAt(i)));
+                    str.append(nsString.substring(with: match.range(at: i)));
 #endif
 
                 }
