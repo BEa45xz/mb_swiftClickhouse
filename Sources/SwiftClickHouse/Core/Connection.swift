@@ -96,7 +96,7 @@ public class Connection {
         throw ClickHouseError.Unknown;
     }
 
-    func parseException(socketReader : mbSocketReader) throws {
+    func parseException(socketReader : SocketReader) throws {
         let e = ClickHouseException();
         var current = e;
 
@@ -278,7 +278,7 @@ public class Connection {
         }
     }
 
-    func receiveData(socketReader : mbSocketReader, block : Block) throws -> Bool {
+    func receiveData(socketReader : SocketReader, block : Block) throws -> Bool {
         if (self.compression == CompressionState.Enable) {
             throw ClickHouseError.NotImplemented(message: "Compression not implemented");
         }
@@ -303,8 +303,8 @@ public class Connection {
         return "\(UUID().hashValue)";
     }
 
-    private func read(socket: Socket) throws -> mbSocketReader? {
-        if let socketReader = mbSocketReader(socket: socket) {
+    private func read(socket: Socket) throws -> SocketReader? {
+        if let socketReader = SocketReader(socket: socket) {
             return socketReader;
         }
 
